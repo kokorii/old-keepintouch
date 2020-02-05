@@ -2,7 +2,6 @@ const TelegramBot = require('node-telegram-bot-api');
 const getJSON = require('get-json');
 const schedule = require('node-schedule');
 
-
 // replace the value below with the Telegram token you receive from @BotFather
 const getToken = (function(){
     const token = process.env.TELEGRAM_TOKEN;
@@ -43,8 +42,16 @@ bot.onText(/\/new/, function(msg, match){
 console.log('schedule');
 var j = schedule.scheduleJob('*/1 * * * *', function(){
         console.log("하루 한 번 메세지를 보내자");
-
+        sendMsg();
 });
+
+function sendMsg(){
+    console.log(bot.message.CHAT_ID);
+    const text = 'Nothing lasts forever';
+    bot.sendMessage(bot.message.CHAT_ID,text).then(function(data){
+          console.log('success');
+    }).catch(err => {console.log(err);});
+    }
 
 
 // Listener (handler) for telegram's /test event
