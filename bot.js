@@ -39,16 +39,16 @@ bot.onText(/\/new/, function(msg, match){
     
 });
  
-console.log('schedule');
+console.log(bot.msg.chat.id);
+console.log(bot.msg.from.id);
 var j = schedule.scheduleJob('*/1 * * * *', function(){
         console.log("하루 한 번 메세지를 보내자");
         sendMsg();
 });
 
 function sendMsg(){
-    console.log(bot.msg.CHAT_ID);
     const text = 'Nothing lasts forever';
-    bot.sendMessage(bot.msg.CHAT_ID,text).then(function(data){
+    bot.sendMessage(bot.msg.from.id,text).then(function(data){
           console.log('success');
     }).catch(err => {console.log(err);});
     }
