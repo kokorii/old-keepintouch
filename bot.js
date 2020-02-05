@@ -1,4 +1,5 @@
 const TelegramBot = require('node-telegram-bot-api');
+const getJSON = require('get-json');
 
 // replace the value below with the Telegram token you receive from @BotFather
 const getToken = (function(){
@@ -10,7 +11,7 @@ const getToken = (function(){
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(getToken(), {polling: true});
-console.log('========='+getToken);
+console.log(getToken);
 
 // Listener (handler) for telegram's /label event
 bot.onText(/\/label/, function(msg, match){
