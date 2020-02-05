@@ -45,7 +45,6 @@ bot.onText(/\/test/, function(msg, match){
   const chatId = msg.chat.id;
   const url = match.input.split(' ')[1];
   
-  require('moment-timezone');
   moment.tz.setDefault("Asia/Seoul");
   console.log(moment().format('YYYY-MM-DD HH:mm:ss'));
 
