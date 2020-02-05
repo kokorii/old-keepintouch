@@ -7,7 +7,7 @@ const getToken = (function(){
     return function() {
         return token;
     };
-});
+})();
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(getToken(), {polling: true});
