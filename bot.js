@@ -16,8 +16,10 @@ bot.onText(/\/start/, function(msg){
     const chatId = msg.chat.id;
     const user_name = msg.from.first_name;
 
-    // send a message to the chat acknowledging receipt of their message
-    bot.sendMessage(chatId,`\"${user_name}\"님, 안녕하세요. 하루 한 번 저장된 메세지중 하나를 보내드릴게요.`);
+    // send a message 
+    bot.sendMessage(chatId,`${user}님, 안녕하세요.<br> 
+                            하루 한 번 저장된 메세지 중 하나를 보내드릴게요.<br>
+                            <b>[\/new 저장할 이야기]</b>로 메세지를 저장하세요.`);
     
 });
 
