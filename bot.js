@@ -10,6 +10,7 @@ const getToken = (function(){
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(getToken(), {polling: true});
+console.log('========='+getToken);
 
 // Listener (handler) for telegram's /label event
 bot.onText(/\/label/, function(msg, match){
