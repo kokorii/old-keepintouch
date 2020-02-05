@@ -42,14 +42,10 @@ bot.onText(/\/new/, function(msg, match){
  
 console.log('schedule');
 var j = schedule.scheduleJob('*/1 * * * *', function(){
-    bot.on('message', (msg) => {
+    
     bot.sendMessage(msg.chat.id, "그 순간 소중한 것이 영원히 소중한 것은 아니다. ");
-
     console.log("success");
 });
-
-});
-
 
 // Listener (handler) for telegram's /test event
 bot.onText(/\/test/, function(msg, match){
