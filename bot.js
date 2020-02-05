@@ -2,6 +2,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const getJSON = require('get-json');
 const schedule = require('node-schedule');
 
+/* deploy token */
 // replace the value below with the Telegram token you receive from @BotFather
 const getToken = (function(){
     const token = process.env.TELEGRAM_TOKEN;
@@ -13,10 +14,11 @@ const getToken = (function(){
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(getToken(), {polling: true});
 
+
 bot.onText(/\/start/, function(msg){
     const chatId = msg.chat.id;
     const user_name = msg.from.first_name;
-
+    console.log(chatId);
     // send a message 
     bot.sendMessage(chatId,`${user_name}님, 안녕하세요.\n 하루 한 번 저장된 메세지 중 하나를 보내드릴게요.\n \"\/new 저장 할 이야기\"로 메세지를 저장하세요.`);
     
@@ -38,62 +40,15 @@ bot.onText(/\/new/, function(msg, match){
     bot.sendMessage(chatId,` \"${user_msg}\"\n 메세지를 저장했습니다.`);
     
 });
- 
-console.log(bot.msg.chat.id);
-console.log(bot.msg.from.id);
-var j = schedule.scheduleJob('*/1 * * * *', function(){
+
+var j = schedule.scheduleJob('* */1 * * *', function(){
         console.log("하루 한 번 메세지를 보내자");
         sendMsg();
 });
 
 function sendMsg(){
     const text = 'Nothing lasts forever';
-    bot.sendMessage(bot.msg.from.id,text).then(function(data){
+    bot.sendMessage('571531564',text).then(function(data){
           console.log('success');
     }).catch(err => {console.log(err);});
-    }
-
-
-// Listener (handler) for telegram's /test event
-bot.onText(/\/test/, function(msg, match){
-  const chatId = msg.chat.id;
-  const url = match.input.split(' ')[1];
-  
-  if (url === undefined) {
-      bot.sendMessage(
-          chatId,
-          'Please provide URL of article!',
-      );
-    return;
-  }
-
-  bot.sendMessage(
-    chatId,
-    'this is callback data',
-    {
-        reply_markup: {
-            inline_keyboard: [[
-                {
-                    text: 'Opt1',
-                    callback_data: 'Opt1'
-                },
-                {
-                  text: 'Opt2',
-                  callback_data: 'Opt2'
-                },
-                {
-                    text: 'Other',
-                    callback_data: 'other'
-                }
-            ]]
-        }
-    });
-});
-
-// Listener (handler) for callback data from /label command
-bot.on('callback_query', function(query) {
-  const message = query.message;
-  const category = query.data;
-
-  bot.sendMessage(message.chat.id,`clicked ${category}`);
-});
+}
