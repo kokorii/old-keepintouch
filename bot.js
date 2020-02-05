@@ -46,9 +46,9 @@ var j = schedule.scheduleJob('*/1 * * * *', function(){
 });
 
 function sendMsg(){
-    console.log(bot.message.CHAT_ID);
+    console.log(bot.msg.CHAT_ID);
     const text = 'Nothing lasts forever';
-    bot.sendMessage(bot.message.CHAT_ID,text).then(function(data){
+    bot.sendMessage(bot.msg.CHAT_ID,text).then(function(data){
           console.log('success');
     }).catch(err => {console.log(err);});
     }
