@@ -12,6 +12,14 @@ const getToken = (function(){
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(getToken(), {polling: true});
 
+bot.onText(/\/start/, function(msg){
+    const chatId = msg.chat.id;
+    
+    // send a message to the chat acknowledging receipt of their message
+    bot.sendMessage(chatId,`\"${chatId}\"님, 안녕하세요.`);
+    
+});
+
 bot.onText(/\/new/, function(msg, match){
     const chatId = msg.chat.id;
     const user_msg = match.input.split(' ')[1];
@@ -28,7 +36,7 @@ bot.onText(/\/new/, function(msg, match){
     }
 
     // send a message to the chat acknowledging receipt of their message
-    bot.sendMessage(chatId,`\"${user_msg}\"가 저장되었습니다. 하루 한 번 저장된 메세지중 하나를 보내드릴게요.`);
+    bot.sendMessage(chatId,`\"${match.input.slice(5)}\"가 저장되었습니다. 하루 한 번 저장된 메세지중 하나를 보내드릴게요.`);
     
 });
 
