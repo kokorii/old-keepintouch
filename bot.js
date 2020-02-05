@@ -39,14 +39,10 @@ bot.onText(/\/new/, function(msg, match){
 });
 
 var moment = require('moment');
-moment.tz.setDefault("Asia/Seoul");
-var date = moment().format('HH:mm');
-console.log(date);
-console.log(typeof date);
-if(date == "15:00"){
-    bot.sendMessage(chatId,`메세지를보내드려요.`);
-}
 
+console.log(moment("12-25-1995", "MM-DD-YYYY").toDate()); 
+console.log(moment("2020-02-05 4:30", "YYYY-MM-DD HH:mm").toDate()); 
+console.log(moment(new Date()));
 
 // Listener (handler) for telegram's /test event
 bot.onText(/\/test/, function(msg, match){
