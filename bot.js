@@ -1,5 +1,6 @@
 const TelegramBot = require('node-telegram-bot-api');
 const getJSON = require('get-json');
+const schedule = require('node-schedule');
 
 
 // replace the value below with the Telegram token you receive from @BotFather
