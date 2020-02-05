@@ -39,6 +39,12 @@ bot.onText(/\/new/, function(msg, match){
     bot.sendMessage(chatId,` \"${user_msg}\"\n 메세지를 저장했습니다.`);
     
 });
+ 
+console.log('schedule');
+const j = schedule.scheduleJob('10 * * * *', function(){
+  console.log('매 10초에 실행');
+});
+console.log('scheduling');
 
 // Listener (handler) for telegram's /test event
 bot.onText(/\/test/, function(msg, match){
