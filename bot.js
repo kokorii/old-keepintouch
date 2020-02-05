@@ -17,7 +17,7 @@ bot.onText(/\/start/, function(msg){
     const user_name = msg.from.first_name;
 
     // send a message 
-    bot.sendMessage(chatId,`${user}님, 안녕하세요. 하루 한 번 저장된 메세지 중 하나를 보내드릴게요. \"\/new 저장 할 이야기\"로 메세지를 저장하세요.`);
+    bot.sendMessage(chatId,`${user}님, 안녕하세요. 하루 한 번 저장된 메세지 중 하나를 보내드릴게요. \/new 저장 할 이야기로 메세지를 저장하세요.`);
     
 });
 
