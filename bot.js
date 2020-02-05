@@ -38,7 +38,7 @@ bot.onText(/\/new/, function(msg, match){
     
 });
 
-var moment = require('moment-timezone');
+var moment = require('moment');
 moment.tz.setDefault("Asia/Seoul");
 var date = moment().format('HH:mm');
 console.log(date);
