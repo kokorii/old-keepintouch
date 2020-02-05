@@ -18,7 +18,7 @@ bot.onText('/\/start/', (msg) => {
     const user_name = msg.from.first_name;
 
     // send a message to the chat acknowledging receipt of their message
-    bot.sendMessage(chatId, `안녕하세요 ${user_name}님, \"\/new 오늘의 한마디\"로 새 글귀를 저장해보세요.`);
+    bot.sendMessage(msg.from.id, `안녕하세요 ${user_name}님, \"\/new 오늘의 한마디\"로 새 글귀를 저장해보세요.`);
   });
   
 bot.onText(/\/new/, function(msg, match){
