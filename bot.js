@@ -13,7 +13,7 @@ const getToken = (function(){
 const bot = new TelegramBot(getToken(), {polling: true});
 
 // Listener (handler) for /start
-bot.onText('/\start/', (msg) => {
+bot.onText('/\/start/', (msg) => {
     const chatId = msg.chat.id;
     const user_name = msg.from.first_name;
 
