@@ -12,8 +12,33 @@ const getToken = (function(){
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(getToken(), {polling: true});
 
-// Listener (handler) for telegram's /label event
-bot.onText(/\/label/, function(msg, match){
+// Listener (handler) for telegram's any kind of message.
+bot.on('message', (msg) => {
+    const chatId = msg.chat.id;
+  
+    // send a message to the chat acknowledging receipt of their message
+    bot.sendMessage(chatId, '안녕하세요, \"\/new 오늘의 한마디\"로 새 글귀를 저장해보세요.');
+  });
+  
+bot.onText(/\/new/, function(msg, match){
+    const chatId = msg.chat.id;
+    const user_msg = match.input.split(' ')[1];
+  
+    if (user_msg === undefined) {
+        bot.sendMessage(
+            chatId,
+            '저장할 메세지가 비어있어요!',
+        );
+      return;
+    }
+
+    // send a message to the chat acknowledging receipt of their message
+    bot.sendMessage(chat.id,`\"${user_msg}\"가 저장되었습니다.`);
+    
+});
+
+// Listener (handler) for telegram's /test event
+bot.onText(/\/test/, function(msg, match){
   const chatId = msg.chat.id;
   const url = match.input.split(' ')[1];
 
