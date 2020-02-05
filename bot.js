@@ -41,20 +41,16 @@ bot.onText(/\/new/, function(msg, match){
 });
  
 console.log('schedule');
-var j = schedule.scheduleJob('*/2 * * * *', function(msg){
-    const chatId = msg.chat.id;
+var j = schedule.scheduleJob('*/1 * * * *', bot.on('message', (msg) => {
+    bot.sendMessage(msg.chat.id, "그 순간 소중한 것이 영원히 소중한 것은 아니다. ");
+}));
 
-    bot.sendMessage(chatId,'nothing lasts forever');
-  });
 
 // Listener (handler) for telegram's /test event
 bot.onText(/\/test/, function(msg, match){
   const chatId = msg.chat.id;
   const url = match.input.split(' ')[1];
   
-  moment.tz.setDefault("Asia/Seoul");
-  console.log(moment().format('YYYY-MM-DD HH:mm:ss'));
-
   if (url === undefined) {
       bot.sendMessage(
           chatId,
