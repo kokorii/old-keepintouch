@@ -14,7 +14,7 @@ const bot = new TelegramBot(getToken(), {polling: true});
 
 bot.onText(/\/start/, function(msg){
     const chatId = msg.chat.id;
-    
+
     console.log(msg.chat);
     console.log(msg.from.first_name);
     
@@ -27,8 +27,6 @@ bot.onText(/\/new/, function(msg, match){
     const chatId = msg.chat.id;
     const user_msg = match.input.slice(5);
 
-    console.log(usr_msg);
-    
     if (user_msg === undefined) {
         bot.sendMessage(
             chatId,
