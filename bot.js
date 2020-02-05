@@ -41,10 +41,11 @@ bot.onText(/\/new/, function(msg, match){
 });
  
 console.log('schedule');
-var j = schedule.scheduleJob('*/2 * * * *', function(){
-    console.log('nothing lasts forever');
+var j = schedule.scheduleJob('*/2 * * * *', function(msg){
+    const chatId = msg.chat.id;
+
+    bot.sendMessage(chatId,'nothing lasts forever');
   });
-console.log('scheduling');
 
 // Listener (handler) for telegram's /test event
 bot.onText(/\/test/, function(msg, match){
