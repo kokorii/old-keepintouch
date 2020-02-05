@@ -41,9 +41,9 @@ bot.onText(/\/new/, function(msg, match){
 });
  
 console.log('schedule');
-const j = schedule.scheduleJob('10 * * * *', function(){
-  console.log('매 10초에 실행');
-});
+var j = schedule.scheduleJob('*/2 * * * *', function(){
+    console.log('nothing lasts forever');
+  });
 console.log('scheduling');
 
 // Listener (handler) for telegram's /test event
