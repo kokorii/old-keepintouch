@@ -33,7 +33,7 @@ bot.onText(/\/new/, function(msg, match){
     }
 
     // send a message to the chat acknowledging receipt of their message
-    bot.sendMessage(chat.id,`\"${user_msg}\"가 저장되었습니다.`);
+    bot.sendMessage(chatId,`\"${user_msg}\"가 저장되었습니다.`);
     
 });
 
