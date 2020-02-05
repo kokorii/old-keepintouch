@@ -41,12 +41,8 @@ bot.onText(/\/new/, function(msg, match){
 });
  
 console.log('schedule');
-var j = schedule.scheduleJob('*/1 * * * *', function(msg){
-    bot.on((msg) => {
-    const chatId = msg.chat.id;
-    bot.sendMessage(msg.chat.id, "그 순간 소중한 것이 영원히 소중한 것은 아니다. ");
-
-});
+var j = schedule.scheduleJob('*/1 * * * *', function(){
+        console.log("하루 한 번 메세지를 보내자");
 
 });
 
