@@ -4,23 +4,15 @@ const schedule = require('node-schedule');
 
 /* deploy token */
 // // replace the value below with the Telegram token you receive from @BotFather
-// const getToken = (function(){
-//     const token = process.env.TELEGRAM_TOKEN;
-//     return function() {
-//         return token;
-//     };
-// })();
+const getToken = (function(){
+    const token = process.env.TELEGRAM_TOKEN;
+    return function() {
+        return token;
+    };
+})();
 
 // // Create a bot that uses 'polling' to fetch new updates
-// const bot = new TelegramBot(getToken(), {polling: true});
-
-
-/* local test token */
-// replace the value below with the Telegram token you receive from @BotFather
-const token = '1082621218:AAG4aX2amKg2w79l7c-yWvDOFexIjMsvzAI';
-
-// Create a bot that uses 'polling' to fetch new updates
-const bot = new TelegramBot(token, {polling: true});
+const bot = new TelegramBot(getToken(), {polling: true});
 
 
 bot.onText(/\/start/, function(msg){
