@@ -1,5 +1,7 @@
 const TelegramBot = require('node-telegram-bot-api');
 const getJSON = require('get-json');
+const moment = require('moment');
+
 
 // replace the value below with the Telegram token you receive from @BotFather
 const getToken = (function(){
@@ -38,16 +40,14 @@ bot.onText(/\/new/, function(msg, match){
     
 });
 
-var moment = require('moment');
-
-console.log(moment("12-25-1995", "MM-DD-YYYY").toDate()); 
-console.log(moment("2020-02-05 4:30", "YYYY-MM-DD HH:mm").toDate()); 
-console.log(moment(new Date()));
-
 // Listener (handler) for telegram's /test event
 bot.onText(/\/test/, function(msg, match){
   const chatId = msg.chat.id;
   const url = match.input.split(' ')[1];
+  
+  require('moment-timezone');
+  moment.tz.setDefault("Asia/Seoul");
+  console.log(moment().format('YYYY-MM-DD HH:mm:ss');
 
   if (url === undefined) {
       bot.sendMessage(
