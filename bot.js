@@ -14,12 +14,10 @@ const bot = new TelegramBot(getToken(), {polling: true});
 
 bot.onText(/\/start/, function(msg){
     const chatId = msg.chat.id;
+    const user_name = msg.from.first_name;
 
-    console.log(msg.chat);
-    console.log(msg.from.first_name);
-    
     // send a message to the chat acknowledging receipt of their message
-    bot.sendMessage(chatId,`\"${chatId}\"님, 안녕하세요. 하루 한 번 저장된 메세지중 하나를 보내드릴게요.`);
+    bot.sendMessage(chatId,`\"${user_name}\"님, 안녕하세요. 하루 한 번 저장된 메세지중 하나를 보내드릴게요.`);
     
 });
 
@@ -27,7 +25,7 @@ bot.onText(/\/new/, function(msg, match){
     const chatId = msg.chat.id;
     const user_msg = match.input.slice(5);
 
-    if (user_msg === undefined) {
+    if (user_msg === "" | user_msg === undefined) {
         bot.sendMessage(
             chatId,
             '저장할 메세지가 비어있어요!',
