@@ -22,5 +22,9 @@
       "url": "https://github.com/kokorii/keepintouch.git/issues",
       "email": "kokori91@gmail.com"
     },
-    "homepage": "https://github.com/kokorii/keepintouch.git#readme"
+    "homepage": "https://github.com/kokorii/keepintouch.git#readme",
+    "dependencies": {
+      "get-json": "0.0.3",
+      "node-telegram-bot-api": "^0.27.0"
+    }
   }
