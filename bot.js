@@ -12,15 +12,6 @@ const getToken = (function(){
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(getToken(), {polling: true});
 
-// Listener (handler) for /start
-bot.onText('/\/start/', (msg) => {
-    const chatId = msg.chat.id;
-    const user_name = msg.from.first_name;
-
-    // send a message to the chat acknowledging receipt of their message
-    bot.sendMessage(chatId, `안녕하세요, \"\/new 오늘의 한마디\"로 새 글귀를 저장해보세요.`);
-  });
-  
 bot.onText(/\/new/, function(msg, match){
     const chatId = msg.chat.id;
     const user_msg = match.input.split(' ')[1];
