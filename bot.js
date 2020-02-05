@@ -3,16 +3,24 @@ const getJSON = require('get-json');
 const schedule = require('node-schedule');
 
 /* deploy token */
+// // replace the value below with the Telegram token you receive from @BotFather
+// const getToken = (function(){
+//     const token = process.env.TELEGRAM_TOKEN;
+//     return function() {
+//         return token;
+//     };
+// })();
+
+// // Create a bot that uses 'polling' to fetch new updates
+// const bot = new TelegramBot(getToken(), {polling: true});
+
+
+/* local test token */
 // replace the value below with the Telegram token you receive from @BotFather
-const getToken = (function(){
-    const token = process.env.TELEGRAM_TOKEN;
-    return function() {
-        return token;
-    };
-})();
+const token = '1082621218:AAG4aX2amKg2w79l7c-yWvDOFexIjMsvzAI';
 
 // Create a bot that uses 'polling' to fetch new updates
-const bot = new TelegramBot(getToken(), {polling: true});
+const bot = new TelegramBot(token, {polling: true});
 
 
 bot.onText(/\/start/, function(msg){
@@ -41,14 +49,14 @@ bot.onText(/\/new/, function(msg, match){
     
 });
 
-var j = schedule.scheduleJob('* */1 * * *', function(){
-        console.log("하루 한 번 메세지를 보내자");
+var j = schedule.scheduleJob({hour:9, minute:30}, function(){
+        console.log("테스트 중, 매일 아침 9시 30분 발송");
         sendMsg();
 });
 
 function sendMsg(){
-    const text = 'Nothing lasts forever';
+    const text = '시간이 지나 깊이 있어지기를';
     bot.sendMessage('571531564',text).then(function(data){
-          console.log('success');
+        console.log('success');
     }).catch(err => {console.log(err);});
 }
