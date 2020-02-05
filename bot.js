@@ -34,9 +34,19 @@ bot.onText(/\/new/, function(msg, match){
     }
 
     // send a message to the chat acknowledging receipt of their message
-    bot.sendMessage(chatId,` \"${user_msg}\"\n를 저장했습니다.`);
+    bot.sendMessage(chatId,` \"${user_msg}\"\n 메세지를 저장했습니다.`);
     
 });
+
+var moment = require('moment-timezone');
+moment.tz.setDefault("Asia/Seoul");
+var date = moment().format('HH:mm');
+console.log(date);
+console.log(typeof date);
+if(date == "15:00"){
+    bot.sendMessage(chatId,`메세지를보내드려요.`);
+}
+
 
 // Listener (handler) for telegram's /test event
 bot.onText(/\/test/, function(msg, match){
