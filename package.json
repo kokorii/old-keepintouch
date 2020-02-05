@@ -19,12 +19,8 @@
     "author": "kokorii",
     "license": "MIT",
     "bugs": {
-      "url": "https://github.com/kokorii/keepintouch.git/issues"
+      "url": "https://github.com/kokorii/keepintouch.git/issues",
+      "email": "kokori91@gmail.com"
     },
-    "homepage": "https://github.com/kokorii/keepintouch.git#readme",
-    "dependencies": {
-      "express": "^4.15.2",
-      "get-json": "0.0.3",
-      "node-telegram-bot-api": "^0.27.0"
-    }
+    "homepage": "https://github.com/kokorii/keepintouch.git#readme"
   }
