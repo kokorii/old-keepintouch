@@ -37,8 +37,16 @@ bot.onText(/\/new/, function(msg, match){
         );
       return;
     }
-    sendMsg();
     // send a message to the chat acknowledging receipt of their message
+    const dataBuffer = fs.readFilesSync('memo.json');
+    const dataJson = dataBuffer.toString();
+
+    const data = JSON.parse(dataJson);
+    const text = data[0].name;
+    
+    bot.sendMessage('571531564',text).then(function(data){
+        console.log('success');
+    }).catch(err => {console.log(err);});
     bot.sendMessage(chatId,` \"${user_msg}\"\n 메세지를 저장했습니다.`);
     
 });
