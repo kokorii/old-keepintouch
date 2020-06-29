@@ -65,11 +65,18 @@ function sendMsg(){
         console.log('success say');
     }).catch(err => {console.log(err);});
 
-    text = data[1].title + ", " + data[1].author;
+    text = data[1].title;
     console.log(text);
     
     bot.sendMessage('571531564',text).then(function(data){
-        console.log('success title author');
+        console.log('success title');
+    }).catch(err => {console.log(err);});
+
+    text = data[1].author;
+    console.log(text);
+
+    bot.sendMessage('571531564',text).then(function(data){
+        console.log('success author');
     }).catch(err => {console.log(err);});
 
 }
