@@ -38,7 +38,7 @@ bot.onText(/\/new/, function(msg, match){
       return;
     }
     // send a message to the chat acknowledging receipt of their message
-    const dataBuffer = fs.readFilesSync('memo.json', 'euc-kr');
+    const dataBuffer = fs.readFilesSync('memo.json', 'utf8');
     const dataJson = dataBuffer.toString();
 
     const data = JSON.parse(dataJson);
