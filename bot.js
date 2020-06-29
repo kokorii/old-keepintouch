@@ -12,7 +12,7 @@ const getToken = (function(){
     };
 })();
 
-// // Create a bot that uses 'polling' to fetch new updates
+// Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(getToken(), {polling: true});
 
 
@@ -38,7 +38,7 @@ bot.onText(/\/new/, function(msg, match){
       return;
     }
     // send a message to the chat acknowledging receipt of their message
-    const dataBuffer = fs.readFilesSync('memo.json');
+    const dataBuffer = fs.readFilesSync('memo.json', 'euc-kr');
     const dataJson = dataBuffer.toString();
 
     const data = JSON.parse(dataJson);
