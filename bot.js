@@ -58,25 +58,18 @@ function sendMsg(){
 
     const data = JSON.parse(dataJson);
     
-    const text = data[1].say;
+    var text = data[1].say;
     console.log(text);
     
     bot.sendMessage('571531564',text).then(function(data){
         console.log('success say');
     }).catch(err => {console.log(err);});
 
-    text = data[1].title;
+    text = data[1].title + ", " + data[1].author;
     console.log(text);
     
     bot.sendMessage('571531564',text).then(function(data){
         console.log('success title');
-    }).catch(err => {console.log(err);});
-
-    text = data[1].author;
-    console.log(text);
-
-    bot.sendMessage('571531564',text).then(function(data){
-        console.log('success author');
     }).catch(err => {console.log(err);});
 
 }
