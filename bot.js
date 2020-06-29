@@ -37,21 +37,11 @@ bot.onText(/\/new/, function(msg, match){
         );
       return;
     }
+
+    sendMsg();
     // send a message to the chat acknowledging receipt of their message
-    console.log("new msg");
-    const dataBuffer = fs.readFileSync('memo.json', 'utf8');
-    const dataJson = dataBuffer.toString();
 
-    const data = JSON.parse(dataJson);
-    const text = data[0].name;
-
-    console.log(text);
-    
-    bot.sendMessage('571531564',text).then(function(data){
-        console.log('success');
-    }).catch(err => {console.log(err);});
-
-    //bot.sendMessage(chatId,` \"${user_msg}\"\n 메세지를 저장했습니다.`);
+    bot.sendMessage(chatId,` \"${user_msg}\"\n 메세지를 저장했습니다.`);
     
 });
 
@@ -61,13 +51,17 @@ var j = schedule.scheduleJob({hour:9, minute:30}, function(){
 });
 
 function sendMsg(){
-    const dataBuffer = fs.readFilesSync('memo.json');
+    
+    const dataBuffer = fs.readFileSync('memo.json', 'utf8');
     const dataJson = dataBuffer.toString();
 
     const data = JSON.parse(dataJson);
-    const text = data[0].name;
-   // const text = '시간이 지나 깊이 있어지기를';
+    const text = data[1].say;
+
+    console.log(text);
+    
     bot.sendMessage('571531564',text).then(function(data){
         console.log('success');
     }).catch(err => {console.log(err);});
+
 }
