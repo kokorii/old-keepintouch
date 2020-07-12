@@ -26,7 +26,7 @@ bot.onText(/\/start/, function(msg){
     
 });
 
-bot.onText(/\/new/, function(msg, match){
+bot.onText(/\/t/, function(msg, match){
     const chatId = msg.chat.id;
     const user_msg = match.input.slice(5);
 
@@ -41,7 +41,6 @@ bot.onText(/\/new/, function(msg, match){
     sendMsg();
 
     // send a message to the chat acknowledging receipt of their message
-
     bot.sendMessage(chatId,` \"${user_msg}\"\n 메세지를 저장했습니다.`);
     
 });
@@ -58,17 +57,22 @@ function sendMsg(){
 
     const data = JSON.parse(dataJson);
     
-    var text = data[1].say;
-    console.log(text);
+    var max = 16;
+    var min = 3;
+    var today_pic = Math.floor(Math.random() * (max - min)) + min;
+
+    var today_memo = data[today_pic].say;
+
+    console.log(today_memo);
     
-    bot.sendMessage('571531564',text).then(function(data){
+    bot.sendMessage('571531564',today_memo).then(function(data){
         console.log('success say');
     }).catch(err => {console.log(err);});
 
-    text = data[1].title + ", " + data[1].author;
-    console.log(text);
+    title_author = today_memo.title + ", " + today_memo.author;
+    console.log(title_author);
     
-    bot.sendMessage('571531564',text).then(function(data){
+    bot.sendMessage('571531564',title_author).then(function(data){
         console.log('success title');
     }).catch(err => {console.log(err);});
 
