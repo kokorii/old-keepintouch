@@ -61,11 +61,11 @@ function sendMsg(){
     var min = 3;
     var today_pic = Math.floor(Math.random() * (max - min)) + min;
 
-    var today_memo = data[today_pic].say;
+    var today_memo = data[today_pic];
 
     console.log(today_memo);
     
-    bot.sendMessage('571531564',today_memo).then(function(data){
+    bot.sendMessage('571531564',today_memo.say).then(function(data){
         console.log('success say');
     }).catch(err => {console.log(err);});
 
